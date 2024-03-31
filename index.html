@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>age calculator</title>
+    <style>
+        body{
+            background-color: rgb(255, 244, 144);
+        }
+        .container {
+            height: 200px;
+            width: 300px;
+            border: 1px solid rgb(63, 213, 233);
+            padding: 50px;
+            margin: 100px auto;
+            border-radius: 10px;
+           background-color: rgb(255, 239, 62);
+           box-shadow: 0 0 10px 5px #2c2b04;
+           border: 2px solid rgb(0, 0, 0);
+
+        }
+
+
+
+        #year {
+            display: block;
+            margin: 10px auto;
+            height: 50px;
+            width: 100%;
+            border-radius: 20px;
+            font-size: 20px;
+            padding: 0 10px;
+        }
+
+        #btn-calculate {
+            cursor: pointer;
+            height: 60px;
+            width: 150px;
+            background-color: rgb(40, 174, 184);
+            border-radius: 20px;
+            border: 1px solid rgb(31, 8, 95);
+           
+            display: block;
+            margin: 40px auto;
+            font-size: 20px;
+            font-weight: 700;
+        }
+        #btn-calculate:hover{
+            scale: 1.01;
+            transition: 0.5s;
+        }
+        #answer {
+            display: block;
+            text-align: center;
+            font-size: 20px;
+            font-weight: 700;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="display-container">
+            <label for="year"></label>
+            <input type="date" id="year" placeholder="Enter Birthdate">
+        </div><br>
+        <span id="answer"> Age Is :</span>
+        <button type="submit" id="btn-calculate" onclick=" age_calculate()">Calculate Age</button>
+    </div>
+    <script>
+        function age_calculate() {
+            const birthyear = document.getElementById('year').value
+
+            const byear = new Date(birthyear)
+            const now = new Date()
+
+            let agediff = now.getFullYear() - byear.getFullYear()
+            const monthdiff = now.getMonth() - byear.getMonth()
+
+            if (monthdiff < 0 || monthdiff === 0 && now.getDate() < byear.getDate()) {
+                agediff--
+            }
+            document.getElementById('answer').innerText = `Age Is: ${agediff}`
+        }
+    </script>
+</body>
+
+</html>
